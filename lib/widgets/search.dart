@@ -22,7 +22,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.grey.shade200,
+        color: Color(0xffd4f0f0),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextField(

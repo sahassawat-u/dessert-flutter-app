@@ -1,5 +1,5 @@
-import 'package:dessert_app/dessert_card.dart';
-import 'package:dessert_app/category.dart';
+import 'package:dessert_app/widgets/dessert_card.dart';
+import 'package:dessert_app/widgets/category.dart';
 import 'package:dessert_app/data/dessert_data.dart';
 import 'package:dessert_app/widgets/search.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   DessertEnum? which;
   int? selectedIndex;
   String query = "";
+  String queryType = "";
   late List<Dessert> desserts;
   //
   @override
@@ -37,8 +38,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        // color: Colors.green.withOpacity(0.5),
-        padding: EdgeInsets.only(top: 70, left: 30, right: 40),
+        color: Color(0xffcce2bc),
+        padding: const EdgeInsets.only(top: 70, left: 30, right: 40),
         child: Column(
           children: [
             Row(
@@ -65,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                   "Welcome to ...",
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.grey[400],
+                    color: Colors.grey[500],
                     // fontFamily: ''
                   ),
                 )
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                   "What do you want \nto cook today ?",
                   style: TextStyle(
                     fontSize: 30,
-                    color: Colors.grey[600],
+                    color: Colors.grey[700],
                     fontWeight: FontWeight.w500,
                     // fontFamily: ''
                   ),
@@ -92,7 +93,7 @@ class _HomePageState extends State<HomePage> {
               hintText: "Search your dessert",
             ),
             const SizedBox(height: 10),
-            Container(
+            SizedBox(
               height: 50,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -100,72 +101,112 @@ class _HomePageState extends State<HomePage> {
                   Category(
                     text_: "Cakes",
                     onPressed_: () {
-                      setState(() {
-                        which = DessertEnum.cake;
-                      });
+                      if (which == DessertEnum.cake) {
+                        setState(() {
+                          which = null;
+                          desserts = allDesserts;
+                        });
+                      } else {
+                        setState(() {
+                          which = DessertEnum.cake;
+                        });
+                        selectCategory(which!);
+                      }
                     },
                     color_: which == DessertEnum.cake
-                        ? const Color(0xfff5cc82)
+                        ? const Color(0xfff56093)
                         : Colors.grey.shade500,
                     ballColor: which == DessertEnum.cake
-                        ? const Color(0xfff5cc82)
-                        : Colors.white,
+                        ? const Color(0xfff56093)
+                        : Color(0xffcce2bc),
                   ),
                   Category(
                     text_: "Cookies",
                     onPressed_: () {
-                      setState(() {
-                        which = DessertEnum.cookie;
-                      });
+                      if (which == DessertEnum.cookie) {
+                        setState(() {
+                          which = null;
+                          desserts = allDesserts;
+                        });
+                      } else {
+                        setState(() {
+                          which = DessertEnum.cookie;
+                        });
+                        selectCategory(which!);
+                      }
                     },
                     color_: which == DessertEnum.cookie
-                        ? const Color(0xfff5cc82)
+                        ? const Color(0xfff56093)
                         : Colors.grey.shade500,
                     ballColor: which == DessertEnum.cookie
-                        ? const Color(0xfff5cc82)
-                        : Colors.white,
+                        ? const Color(0xfff56093)
+                        : Color(0xffcce2bc),
                   ),
                   Category(
                     text_: "Ice Cream",
                     onPressed_: () {
-                      setState(() {
-                        which = DessertEnum.iceCream;
-                      });
+                      if (which == DessertEnum.iceCream) {
+                        setState(() {
+                          which = null;
+                          desserts = allDesserts;
+                        });
+                      } else {
+                        setState(() {
+                          which = DessertEnum.iceCream;
+                        });
+                        selectCategory(which!);
+                      }
                     },
                     color_: which == DessertEnum.iceCream
-                        ? const Color(0xfff5cc82)
+                        ? const Color(0xfff56093)
                         : Colors.grey.shade500,
                     ballColor: which == DessertEnum.iceCream
-                        ? const Color(0xfff5cc82)
-                        : Colors.white,
+                        ? const Color(0xfff56093)
+                        : Color(0xffcce2bc),
                   ),
                   Category(
                     text_: "Pancakes",
                     onPressed_: () {
-                      setState(() {
-                        which = DessertEnum.pancake;
-                      });
+                      if (which == DessertEnum.pancake) {
+                        setState(() {
+                          which = null;
+                          desserts = allDesserts;
+                        });
+                      } else {
+                        setState(() {
+                          which = DessertEnum.pancake;
+                        });
+                        selectCategory(which!);
+                      }
                     },
                     color_: which == DessertEnum.pancake
-                        ? const Color(0xfff5cc82)
+                        ? const Color(0xfff56093)
                         : Colors.grey.shade500,
                     ballColor: which == DessertEnum.pancake
-                        ? const Color(0xfff5cc82)
-                        : Colors.white,
+                        ? const Color(0xfff56093)
+                        : Color(0xffcce2bc),
                   ),
                   Category(
                     text_: "Waffles",
                     onPressed_: () {
-                      setState(() {
-                        which = DessertEnum.waffle;
-                      });
+                      if (which == DessertEnum.waffle) {
+                        setState(() {
+                          which = null;
+                          desserts = allDesserts;
+                        });
+                      } else {
+                        setState(() {
+                          which = DessertEnum.waffle;
+                        });
+                        selectCategory(which!);
+                      }
                     },
                     color_: which == DessertEnum.waffle
                         ? const Color(0xfff5cc82)
                         : Colors.grey.shade500,
                     ballColor: which == DessertEnum.waffle
                         ? const Color(0xfff5cc82)
-                        : Colors.white,
+                        : Color(0xffcce2bc),
                   ),
                 ],
                 // ),
@@ -178,14 +219,14 @@ class _HomePageState extends State<HomePage> {
                   "Popular Recipes",
                   style: TextStyle(
                     fontSize: 22,
-                    color: Colors.grey,
+                    color: Colors.grey.shade600,
                   ),
                   textAlign: TextAlign.start,
                 )
               ],
             ),
             const SizedBox(height: 30),
-            Container(
+            SizedBox(
               height: 300,
               child: PageView.builder(
                 onPageChanged: (index) {
@@ -275,15 +316,41 @@ class _HomePageState extends State<HomePage> {
   }
 
   void searchDessert(String query) {
-    print(query);
     final desserts = allDesserts.where((dessert) {
       final nameLower = dessert.name.toLowerCase();
       final searchLower = query.toLowerCase();
       return nameLower.contains(searchLower);
     }).toList();
     setState(() {
+      which = null;
       this.query = query;
       this.desserts = desserts;
+    });
+  }
+
+  String convertToString(DessertEnum which) {
+    switch (which) {
+      case DessertEnum.cake:
+        return "cake";
+      case DessertEnum.cookie:
+        return "cookie";
+      case DessertEnum.iceCream:
+        return "iceCream";
+      case DessertEnum.pancake:
+        return "pancake";
+      case DessertEnum.waffle:
+        return "waffle";
+    }
+  }
+
+  void selectCategory(DessertEnum which) {
+    String queryType = convertToString(which);
+    final desserts = allDesserts.where((dessert) {
+      return dessert.type == queryType;
+    }).toList();
+    setState(() {
+      this.desserts = desserts;
+      this.queryType = "";
     });
   }
 }

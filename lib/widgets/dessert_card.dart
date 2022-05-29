@@ -47,11 +47,8 @@ class DessertCard extends StatelessWidget {
       Container(
         height: 300,
         width: 400,
-        // width: MediaQuery.of(context).size.width,
-        // color: Colors.redAccent.withOpacity(0.5),
         margin: EdgeInsets.only(top: 85, right: 60),
         decoration: BoxDecoration(
-          // color: Colors.redAccent.withOpacity(0.5),
           image: DecorationImage(
             // fit: BoxFit.fill,
             image: NetworkImage(dessert.imgUrl),

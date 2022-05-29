@@ -10,7 +10,7 @@ final allDesserts = <Dessert>[
     time: "45 mins",
     serving: 2,
     lvl: "easy",
-    color: const Color(0xffff2071),
+    color: const Color(0xffff629a),
   ),
   Dessert(
     name: "Belgian \nwaffle",
