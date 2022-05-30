@@ -1,10 +1,11 @@
+import 'package:dessert_app/pages/recipe_page.dart';
 import 'package:dessert_app/widgets/dessert_card.dart';
 import 'package:dessert_app/widgets/category.dart';
 import 'package:dessert_app/data/dessert_data.dart';
 import 'package:dessert_app/widgets/search.dart';
 import 'package:flutter/material.dart';
 
-import 'models/dessert.dart';
+import '../models/dessert.dart';
 
 enum DessertEnum {
   cake,
@@ -55,7 +56,6 @@ class _HomePageState extends State<HomePage> {
                   Icons.notifications_outlined,
                   size: 25,
                   color: Colors.grey,
-                  // color: Colors.,
                 ),
               ],
             ),
@@ -246,6 +246,14 @@ class _HomePageState extends State<HomePage> {
                     curve: Curves.ease,
                     child: DessertCard(
                       dessert: dessert_,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RecipePage(
+                                      dessert: dessert_,
+                                    )));
+                      },
                     ),
                     builder:
                         (BuildContext context, double value, Widget? child) {
