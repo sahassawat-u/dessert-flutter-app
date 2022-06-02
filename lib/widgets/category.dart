@@ -20,7 +20,7 @@ class Category extends StatelessWidget {
     return Container(
       // color: Colors.redAccent.withOpacity(0.8),
       padding: const EdgeInsets.all(10),
-      margin: EdgeInsets.only(right: 10),
+      margin: const EdgeInsets.only(right: 10),
       child: Column(
         children: [
           GestureDetector(

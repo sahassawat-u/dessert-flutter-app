@@ -1,11 +1,10 @@
-import 'package:dessert_app/data/dessert_data.dart';
+import 'package:dessert_app/models/ingredient.dart';
 import 'package:flutter/material.dart';
 
-import '../models/dessert.dart';
-
-class Ingredient extends StatelessWidget {
-  Ingredient({Key? key}) : super(key: key);
-  final Dessert dessert = allDesserts[0];
+class IngredientWidget extends StatelessWidget {
+  IngredientWidget({required this.ingredient, required this.theme});
+  final Ingredient ingredient;
+  final Color theme;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,18 +13,12 @@ class Ingredient extends StatelessWidget {
       width: 60,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: Colors.blueAccent),
+        border: Border.all(color: theme),
       ),
       child: Container(
-        // color: Colors.red,
-        height: 20,
-        width: 20,
+        padding: EdgeInsets.all(10),
         child: Image.network(
-          dessert.imgUrl,
-          // height: 50,
-          // width: 50,
-          fit: BoxFit.contain,
-          // scale: 0.8,
+          ingredient.imgUrl,
         ),
       ),
     );

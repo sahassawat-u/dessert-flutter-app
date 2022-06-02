@@ -2,8 +2,8 @@ import 'package:dessert_app/data/dessert_data.dart';
 import 'package:dessert_app/models/dessert.dart';
 import 'package:flutter/material.dart';
 
-class DessertCard extends StatelessWidget {
-  DessertCard({required this.dessert, required this.onPressed});
+class DessertCardWidget extends StatelessWidget {
+  DessertCardWidget({required this.dessert, required this.onPressed});
   final VoidCallback? onPressed;
   final Dessert dessert;
   @override
@@ -14,13 +14,13 @@ class DessertCard extends StatelessWidget {
         Container(
           width: 300,
           height: 300,
-          margin: EdgeInsets.only(right: 15, left: 25),
+          margin: const EdgeInsets.only(right: 15, left: 25),
           decoration: BoxDecoration(
               color: dessert.color.withOpacity(0.8),
               borderRadius: BorderRadius.circular(22),
               boxShadow: [
                 BoxShadow(
-                  offset: Offset(5, 10),
+                  offset: const Offset(5, 10),
                   blurRadius: 20,
                   color: dessert.color.withOpacity(0.5),
                 ),
@@ -28,7 +28,7 @@ class DessertCard extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   left: 35,
                   top: 35,
                 ),

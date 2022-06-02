@@ -6,7 +6,7 @@ import '../widgets/ingredient.dart';
 class RecipePage extends StatelessWidget {
   RecipePage({required this.dessert});
   final Dessert dessert;
-  final List<String> items = ['apple', 'banana', 'orange', 'lemon'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,11 +34,19 @@ class RecipePage extends StatelessWidget {
                         flex: 1,
                         child: Column(
                           children: [
-                            Icon(Icons.access_alarms),
+                            Icon(
+                              Icons.access_alarms,
+                              color: Colors.grey.shade700,
+                            ),
                             SizedBox(
                               height: 8,
                             ),
-                            Text(dessert.time),
+                            Text(
+                              dessert.time,
+                              style: TextStyle(
+                                color: Colors.grey.shade700,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -46,11 +54,19 @@ class RecipePage extends StatelessWidget {
                         flex: 1,
                         child: Column(
                           children: [
-                            Icon(Icons.person_outlined),
+                            Icon(
+                              Icons.person_outlined,
+                              color: Colors.grey.shade700,
+                            ),
                             SizedBox(
                               height: 8,
                             ),
-                            Text(dessert.serving.toString() + " servings"),
+                            Text(
+                              dessert.serving,
+                              style: TextStyle(
+                                color: Colors.grey.shade700,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -58,11 +74,19 @@ class RecipePage extends StatelessWidget {
                         flex: 1,
                         child: Column(
                           children: [
-                            Icon(Icons.emoji_objects_outlined),
+                            Icon(
+                              Icons.emoji_objects_outlined,
+                              color: Colors.grey.shade700,
+                            ),
                             SizedBox(
                               height: 8,
                             ),
-                            Text(dessert.lvl),
+                            Text(
+                              dessert.lvl,
+                              style: TextStyle(
+                                color: Colors.grey.shade700,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -86,13 +110,15 @@ class RecipePage extends StatelessWidget {
                         child: Row(
                           children: [
                             IconButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                icon: Icon(Icons.arrow_back_ios)),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: Icon(Icons.arrow_back_ios),
+                              color: Colors.grey.shade700,
+                            ),
                             // Icon(Icons.arrow_back_ios),
                             Expanded(child: Container()),
-                            Icon(Icons.favorite_outline),
+                            // Icon(Icons.favorite_outline),
                           ],
                         ),
                       ),
@@ -120,10 +146,9 @@ class RecipePage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Container(
+              // padding: EdgeInsets.all(30),
               height: 300,
               child: SingleChildScrollView(
                 child: Column(
@@ -141,19 +166,28 @@ class RecipePage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 15),
+                      width: MediaQuery.of(context).size.width,
+                      // color: Colors.red,
+                      margin: const EdgeInsets.only(
+                        top: 18,
+                        bottom: 18,
+                        left: 20,
+                      ),
                       height: 60.0,
                       child: ListView.builder(
                         physics: ClampingScrollPhysics(),
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
-                        itemCount: 5,
+                        itemCount: dessert.ingredients.length,
                         itemBuilder: (BuildContext context, int index) =>
-                            Ingredient(),
+                            IngredientWidget(
+                          ingredient: dessert.ingredients[index],
+                          theme: dessert.color,
+                        ),
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.only(left: 40, top: 10),
+                      padding: const EdgeInsets.only(left: 40),
                       width: MediaQuery.of(context).size.width,
                       child: const Text(
                         "Description",
@@ -164,19 +198,11 @@ class RecipePage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.only(left: 40, top: 20),
+                      width: MediaQuery.of(context).size.width,
+                      padding:
+                          const EdgeInsets.only(left: 40, top: 20, right: 40),
                       child: Text(
-                        """Preheat the oven to 350 degrees F. Lightly oil and flour three 9 by 1 1/2-inch round cake pans.
-In a large bowl, sift together the flour, sugar, baking soda, salt, and cocoa powder. In another large bowl, whisk together the oil, buttermilk, eggs, food coloring, vinegar, and vanilla.
-Using a standing mixer, mix the dry ingredients into the wet ingredients until just combined and a smooth batter is formed.
-Divide the cake batter evenly among the prepared cake pans. Place the pans in the oven evenly spaced apart. Bake, rotating the pans halfway through the cooking, until the cake pulls away from the side of the pans, and a toothpick inserted in the center of the cakes comes out clean, about 30 minutes.
-Remove the cakes from the oven and run a knife around the edges to loosen them from the sides of the pans. One at a time, invert the cakes onto a plate and then re-invert them onto a cooling rack, rounded-sides up. Let cool completely.
-Frost the cake. Place 1 layer, rounded-side down, in the middle of a rotating cake stand. Using a palette knife or offset spatula spread some of the Cream Cheese Frosting over the top of the cake. (Spread enough frosting to make a 1/4 to 1/2-inch layer.) Carefully set another layer on top, rounded-side down, and repeat. Top with the remaining layer and cover the entire cake with the remaining frosting. Sprinkle the top with the pecans.
-Cream Cheese Frosting:
-Yield: enough to frost a 3 layer (9-inch) cake
-In a standing mixer fitted with the paddle attachment, or with a hand-held electric mixer in a large bowl, mix the cream cheese, sugar, and butter on low speed until incorporated. Increase the speed to high, and mix until light and fluffy, about 5 minutes. (Occasionally turn the mixer off, and scrape the down the sides of the bowl with a rubber spatula.)
-Reduce the speed of the mixer to low. Add the vanilla, raise the speed to high and mix briefly until fluffy (scrape down the bowl occasionally). Store in the refrigerator until somewhat stiff, before using. May be stored in the refrigerator for 3 days.
-                    """,
+                        dessert.step,
                         style: TextStyle(
                           fontSize: 16,
                         ),
@@ -186,55 +212,10 @@ Reduce the speed of the mixer to low. Add the vanilla, raise the speed to high a
                 ),
               ),
             ),
-//             Expanded(
-//               child: ListView(
-//                 padding: EdgeInsets.only(bottom: 10),
-//                 children: <Widget>[
-//                   Container(
-//                     padding: const EdgeInsets.only(left: 40),
-//                     width: MediaQuery.of(context).size.width,
-//                     child: const Text(
-//                       "Ingredients",
-//                       style: TextStyle(
-//                         fontSize: 18,
-//                         fontWeight: FontWeight.w500,
-//                       ),
-//                     ),
-//                   ),
-//                   ListView.builder(
-//                       // scrollDirection: Axis.horizontal,
-//                       shrinkWrap: true,
-//                       physics: ClampingScrollPhysics(),
-//                       itemCount: 5,
-//                       itemBuilder: (BuildContext context, int index) {
-//                         return Ingredient();
-//                       }),
-//
-//                   Container(
-//                     padding: const EdgeInsets.only(left: 40, top: 20),
-//                     child: Text(
-//                       """Preheat the oven to 350 degrees F. Lightly oil and flour three 9 by 1 1/2-inch round cake pans.
-// In a large bowl, sift together the flour, sugar, baking soda, salt, and cocoa powder. In another large bowl, whisk together the oil, buttermilk, eggs, food coloring, vinegar, and vanilla.
-// Using a standing mixer, mix the dry ingredients into the wet ingredients until just combined and a smooth batter is formed.
-// Divide the cake batter evenly among the prepared cake pans. Place the pans in the oven evenly spaced apart. Bake, rotating the pans halfway through the cooking, until the cake pulls away from the side of the pans, and a toothpick inserted in the center of the cakes comes out clean, about 30 minutes.
-// Remove the cakes from the oven and run a knife around the edges to loosen them from the sides of the pans. One at a time, invert the cakes onto a plate and then re-invert them onto a cooling rack, rounded-sides up. Let cool completely.
-// Frost the cake. Place 1 layer, rounded-side down, in the middle of a rotating cake stand. Using a palette knife or offset spatula spread some of the Cream Cheese Frosting over the top of the cake. (Spread enough frosting to make a 1/4 to 1/2-inch layer.) Carefully set another layer on top, rounded-side down, and repeat. Top with the remaining layer and cover the entire cake with the remaining frosting. Sprinkle the top with the pecans.
-// Cream Cheese Frosting:
-// Yield: enough to frost a 3 layer (9-inch) cake
-// In a standing mixer fitted with the paddle attachment, or with a hand-held electric mixer in a large bowl, mix the cream cheese, sugar, and butter on low speed until incorporated. Increase the speed to high, and mix until light and fluffy, about 5 minutes. (Occasionally turn the mixer off, and scrape the down the sides of the bowl with a rubber spatula.)
-// Reduce the speed of the mixer to low. Add the vanilla, raise the speed to high and mix briefly until fluffy (scrape down the bowl occasionally). Store in the refrigerator until somewhat stiff, before using. May be stored in the refrigerator for 3 days.
-//                     """,
-//                       style: TextStyle(
-//                         fontSize: 16,
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ),
           ],
         ),
       ),
     );
   }
+  // print();
 }

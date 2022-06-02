@@ -1,14 +1,18 @@
 import 'dart:ui';
 
+import 'package:dessert_app/models/ingredient.dart';
+import 'package:dessert_app/pages/home_page.dart';
+
 class Dessert {
   final String name;
-  final String type;
+  final DessertEnum type;
   final String imgUrl;
   final String time;
-  final int serving;
+  final String serving;
   final String lvl;
   final Color color;
-  // final List<String> ingredients;
+  final String step;
+  final List<Ingredient> ingredients;
 
   Dessert({
     required this.name,
@@ -18,5 +22,7 @@ class Dessert {
     required this.serving,
     required this.lvl,
     required this.color,
+    required this.step,
+    required this.ingredients,
   });
 }
