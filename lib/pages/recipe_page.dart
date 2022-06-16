@@ -1,4 +1,5 @@
 import 'package:dessert_app/models/dessert.dart';
+import 'package:dessert_app/pages/timer.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/ingredient.dart';
@@ -31,23 +32,63 @@ class RecipePage extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Expanded(
-                        flex: 1,
-                        child: Column(
-                          children: [
-                            Icon(
-                              Icons.access_alarms,
-                              color: Colors.grey.shade700,
+                        // color: Colors.red,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TimerPage(
+                                          prepTime: dessert.prepTime,
+                                          cookTime: dessert.cookTime,
+                                          color: dessert.color,
+                                        )));
+                          },
+
+                          // color: Colors.grey.shade300,
+                          // decoration: BoxDecoration(
+                          //     borderRadius: BorderRadius.all(Radius.circular(5)),
+                          //     // ),
+                          //     border: Border.all(color: Colors.grey.shade500)),
+                          child: Container(
+                            margin: EdgeInsets.only(left: 30),
+                            // width: 130,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: dessert.color),
+                              // color: dessert.color,
                             ),
-                            SizedBox(
-                              height: 8,
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     Navigator.push(
+                            //         context,
+                            //         MaterialPageRoute(
+                            //             builder: (context) => TimerPage(
+                            //                   prepTime: dessert.prepTime,
+                            //                   cookTime: dessert.cookTime,
+                            //                   color: dessert.color,
+                            //                 )));
+                            //   },
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.access_alarms,
+                                  color: dessert.color,
+                                ),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                Text(
+                                  (dessert.prepTime + dessert.cookTime)
+                                          .toString() +
+                                      " mins",
+                                  style: TextStyle(
+                                    color: dessert.color,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              dessert.time,
-                              style: TextStyle(
-                                color: Colors.grey.shade700,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                       Expanded(
@@ -167,7 +208,6 @@ class RecipePage extends StatelessWidget {
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      // color: Colors.red,
                       margin: const EdgeInsets.only(
                         top: 18,
                         bottom: 18,

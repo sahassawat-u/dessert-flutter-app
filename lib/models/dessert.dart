@@ -7,7 +7,8 @@ class Dessert {
   final String name;
   final DessertEnum type;
   final String imgUrl;
-  final String time;
+  final int prepTime;
+  final int cookTime;
   final String serving;
   final String lvl;
   final Color color;
@@ -18,7 +19,8 @@ class Dessert {
     required this.name,
     required this.type,
     required this.imgUrl,
-    required this.time,
+    required this.prepTime,
+    required this.cookTime,
     required this.serving,
     required this.lvl,
     required this.color,

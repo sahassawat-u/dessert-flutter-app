@@ -63,11 +63,10 @@ class _HomePageState extends State<HomePage> {
             Row(
               children: [
                 Text(
-                  "Welcome to ...",
+                  "Welcome to Dessert Bar",
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.grey[500],
-                    // fontFamily: ''
                   ),
                 )
               ],
@@ -308,16 +307,10 @@ class _HomePageState extends State<HomePage> {
                       });
                     },
                     icon: (isFavClicked)
-                        ? Icon(Icons.favorite_outline)
-                        : Icon(Icons.favorite),
-                    color: (isFavClicked) ? Colors.grey : Colors.red,
+                        ? Icon(Icons.favorite)
+                        : Icon(Icons.favorite_outline),
+                    color: (isFavClicked) ? Colors.red : Colors.grey,
                   ),
-                  // ),
-                  // Icon(
-                  //   Icons.favorite_outline,
-                  //   color: Colors.grey,
-                  // ),
-                  // SizedBox(width: 30),
                   Icon(
                     Icons.search,
                     color: Colors.grey,

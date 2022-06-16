@@ -31,6 +31,7 @@ class DessertCardWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(
                   left: 35,
                   top: 35,
+                  right: 35,
                 ),
                 child: Text(
                   dessert.name,
