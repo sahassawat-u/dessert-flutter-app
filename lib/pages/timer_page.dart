@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'dart:ffi';
-
-import 'package:dessert_app/widgets/mediaButton.dart';
+import 'package:dessert_app/widgets/media_button.dart';
 import 'package:flutter/material.dart';
 
 class TimerPage extends StatefulWidget {
@@ -24,7 +22,7 @@ class _TimerPageState extends State<TimerPage> {
   late int time;
   int seconds = 60;
   bool isTimerUsed = false;
-  String whichTime = "Prep Time";
+  bool isPrep = true;
   @override
   void initState() {
     super.initState();
@@ -48,13 +46,10 @@ class _TimerPageState extends State<TimerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          // color: Colors.grey.shade0,
           padding: const EdgeInsets.only(top: 70, left: 30, right: 40),
           child: Column(
-            // mainAxisAlignment: MainAxi1 - time / widget.time,asAlignment.center,
             children: [
               Container(
-                // color: Colors.red,
                 child: Row(children: [
                   IconButton(
                     onPressed: () {
@@ -63,7 +58,6 @@ class _TimerPageState extends State<TimerPage> {
                     icon: Icon(Icons.arrow_back_ios),
                     color: Colors.grey.shade400,
                   ),
-                  // alignment: Alignment.center,
                   Container(
                     width: 280,
                     child: Text(
@@ -75,36 +69,23 @@ class _TimerPageState extends State<TimerPage> {
                       ),
                     ),
                   )
-                  // Expanded(
-                  // Container(
-                  //   width: 300,
-                  //   // width: double.infinity,
-                  //   color: Colors.blue,
-                  //   child: Text(
-                  //     "Timer",
-                  //   ),
-                  // ),
-                  // )
                 ]),
               ),
               Container(
-                // color: Colors.red,
                 padding: EdgeInsets.all(30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     OutlinedButton(
                       style: OutlinedButton.styleFrom(
-                        side: whichTime == "Prep Time"
-                            ? BorderSide(color: widget.color)
-                            : null,
+                        side: isPrep ? BorderSide(color: widget.color) : null,
                       ),
                       onPressed: () {
                         setState(() => {
                               // isTimerUsed = !isTimerUsed,
-                              if (whichTime != "Prep Time")
+                              if (!isPrep)
                                 {
-                                  whichTime = "Prep Time",
+                                  isPrep = true,
                                   time = widget.prepTime * seconds,
                                 }
                             });
@@ -112,23 +93,19 @@ class _TimerPageState extends State<TimerPage> {
                       child: Text(
                         "Prep Time",
                         style: TextStyle(
-                          color: whichTime == "Prep Time"
-                              ? widget.color
-                              : Colors.grey.shade500,
+                          color: isPrep ? widget.color : Colors.grey.shade500,
                         ),
                       ),
                     ),
                     OutlinedButton(
                       style: OutlinedButton.styleFrom(
-                        side: whichTime == "Cooking Time"
-                            ? BorderSide(color: widget.color)
-                            : null,
+                        side: !isPrep ? BorderSide(color: widget.color) : null,
                       ),
                       onPressed: () {
                         setState(() => {
-                              if (whichTime != "Cooking Time")
+                              if (isPrep)
                                 {
-                                  whichTime = "Cooking Time",
+                                  isPrep = false,
                                   time = widget.cookTime * seconds,
                                 }
                             });
@@ -136,9 +113,7 @@ class _TimerPageState extends State<TimerPage> {
                       child: Text(
                         "Cooking Time",
                         style: TextStyle(
-                          color: whichTime == "Cooking Time"
-                              ? widget.color
-                              : Colors.grey.shade500,
+                          color: !isPrep ? widget.color : Colors.grey.shade500,
                         ),
                       ),
                     ),
@@ -146,7 +121,7 @@ class _TimerPageState extends State<TimerPage> {
                 ),
               ),
               Text(
-                whichTime,
+                isPrep ? "Prep Time" : "Cooking Time",
                 style: TextStyle(color: widget.color, fontSize: 18),
               ),
               Container(
@@ -165,10 +140,9 @@ class _TimerPageState extends State<TimerPage> {
 
   Widget timerButton() {
     final isActive = timer == null ? false : timer!.isActive;
-    final isCompleted = time ==
-            (whichTime == "Prep Time" ? widget.prepTime : widget.cookTime) *
-                seconds ||
-        time == 0;
+    final isCompleted =
+        time == (isPrep ? widget.prepTime : widget.cookTime) * seconds ||
+            time == 0;
     return isActive || !isCompleted
         ? Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -205,8 +179,45 @@ class _TimerPageState extends State<TimerPage> {
           );
   }
 
-  void resetTimer() => setState(() => time =
-      (whichTime == "Prep Time" ? widget.prepTime : widget.cookTime) * seconds);
+  showTimeOutDialog(BuildContext context) => showDialog(
+      context: context,
+      builder: (ctx) => Dialog(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            child: Container(
+              padding: EdgeInsets.all(8),
+              height: 150,
+              width: 30,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(bottom: 20),
+                    child: Text(
+                      (isPrep ? "Prep Time" : "Cooking Time") +
+                          ' has finished!',
+                      style: TextStyle(
+                          fontSize: 20, color: Colors.redAccent.shade200),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  OutlinedButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: Text(
+                        "close",
+                        style: TextStyle(color: Colors.redAccent.shade200),
+                      ))
+                ],
+              ),
+            ),
+          ));
+  void resetTimer() => setState(
+      () => time = (isPrep ? widget.prepTime : widget.cookTime) * seconds);
   void startTimer({bool reset = false}) {
     if (reset) {
       resetTimer();
@@ -215,6 +226,7 @@ class _TimerPageState extends State<TimerPage> {
       if (time > 0) {
         setState(() => time--);
       } else {
+        showTimeOutDialog(context);
         stopTimer(reset: false);
       }
     });
@@ -227,7 +239,7 @@ class _TimerPageState extends State<TimerPage> {
     setState(() => timer?.cancel());
   }
 
-  String formatedTime(int secTime) {
+  String formattedTime(int secTime) {
     String getParsedTime(String time) {
       if (time.length <= 1) return "0$time";
       return time;
@@ -241,9 +253,8 @@ class _TimerPageState extends State<TimerPage> {
   }
 
   Widget timerWidget() {
-    final String showTime = formatedTime(time);
-    final totalTime =
-        (whichTime == "Prep Time" ? widget.prepTime : widget.cookTime) * 60;
+    final String showTime = formattedTime(time);
+    final totalTime = (isPrep ? widget.prepTime : widget.cookTime) * 60;
     return SizedBox(
       width: 230,
       height: 230,

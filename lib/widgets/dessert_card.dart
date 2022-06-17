@@ -1,9 +1,9 @@
-import 'package:dessert_app/data/dessert_data.dart';
 import 'package:dessert_app/models/dessert.dart';
 import 'package:flutter/material.dart';
 
 class DessertCardWidget extends StatelessWidget {
   DessertCardWidget({required this.dessert, required this.onPressed});
+
   final VoidCallback? onPressed;
   final Dessert dessert;
   @override
@@ -53,7 +53,6 @@ class DessertCardWidget extends StatelessWidget {
           margin: EdgeInsets.only(top: 85, right: 60),
           decoration: BoxDecoration(
             image: DecorationImage(
-              // fit: BoxFit.fill,
               image: NetworkImage(dessert.imgUrl),
             ),
           ),

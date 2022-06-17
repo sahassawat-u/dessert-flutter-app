@@ -1,9 +1,9 @@
 class Ingredient {
   final String imgUrl;
-  final String measure;
+  final String name;
 
   Ingredient({
     required this.imgUrl,
-    required this.measure,
+    required this.name,
   });
 }

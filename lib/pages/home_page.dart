@@ -8,11 +8,11 @@ import 'package:flutter/material.dart';
 import '../models/dessert.dart';
 
 enum DessertEnum {
-  cake,
-  cookie,
-  iceCream,
-  pancake,
-  waffle,
+  CAKE,
+  COOKIE,
+  ICECREAM,
+  PANCAKE,
+  WAFFLE,
 }
 
 class HomePage extends StatefulWidget {
@@ -26,8 +26,8 @@ class _HomePageState extends State<HomePage> {
   DessertEnum? which;
   int selectedIndex = 0;
   String query = "";
-  String queryType = "";
   late List<Dessert> desserts;
+  // for cuteness (heart icon)
   bool isFavClicked = false;
   @override
   void initState() {
@@ -50,8 +50,8 @@ class _HomePageState extends State<HomePage> {
                   size: 25,
                   color: Colors.grey,
                 ),
+                // or  mainAxisAlignment space between
                 Expanded(child: Container()),
-                // Expanded(child: w)
                 const Icon(
                   Icons.notifications_outlined,
                   size: 25,
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                   "Welcome to Dessert Bar",
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.grey[500],
+                    color: Colors.grey.shade500,
                   ),
                 )
               ],
@@ -79,7 +79,6 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 30,
                     color: Colors.grey[700],
                     fontWeight: FontWeight.w500,
-                    // fontFamily: ''
                   ),
                   textAlign: TextAlign.start,
                 )
@@ -95,115 +94,116 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 50,
               child: ListView(
+                // user builder instead
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Category(
+                  CategoryWidget(
                     text_: "Cakes",
                     onPressed_: () {
-                      if (which == DessertEnum.cake) {
+                      if (which == DessertEnum.CAKE) {
                         setState(() {
                           which = null;
                           desserts = allDesserts;
                         });
                       } else {
                         setState(() {
-                          which = DessertEnum.cake;
+                          which = DessertEnum.CAKE;
                         });
                         selectCategory(which!);
                       }
                     },
-                    color_: which == DessertEnum.cake
+                    color_: which == DessertEnum.CAKE
                         ? const Color(0xfff56093)
                         : Colors.grey.shade500,
-                    ballColor: which == DessertEnum.cake
+                    ballColor: which == DessertEnum.CAKE
                         ? const Color(0xfff56093)
                         : Colors.white,
                   ),
-                  Category(
+                  CategoryWidget(
                     text_: "Cookies",
                     onPressed_: () {
-                      if (which == DessertEnum.cookie) {
+                      if (which == DessertEnum.COOKIE) {
                         setState(() {
                           which = null;
                           desserts = allDesserts;
                         });
                       } else {
                         setState(() {
-                          which = DessertEnum.cookie;
+                          which = DessertEnum.COOKIE;
                         });
                         selectCategory(which!);
                       }
                     },
-                    color_: which == DessertEnum.cookie
+                    color_: which == DessertEnum.COOKIE
                         ? const Color(0xfff56093)
                         : Colors.grey.shade500,
-                    ballColor: which == DessertEnum.cookie
+                    ballColor: which == DessertEnum.COOKIE
                         ? const Color(0xfff56093)
                         : Colors.white,
                   ),
-                  Category(
+                  CategoryWidget(
                     text_: "Ice Cream",
                     onPressed_: () {
-                      if (which == DessertEnum.iceCream) {
+                      if (which == DessertEnum.ICECREAM) {
                         setState(() {
                           which = null;
                           desserts = allDesserts;
                         });
                       } else {
                         setState(() {
-                          which = DessertEnum.iceCream;
+                          which = DessertEnum.ICECREAM;
                         });
                         selectCategory(which!);
                       }
                     },
-                    color_: which == DessertEnum.iceCream
+                    color_: which == DessertEnum.ICECREAM
                         ? const Color(0xfff56093)
                         : Colors.grey.shade500,
-                    ballColor: which == DessertEnum.iceCream
+                    ballColor: which == DessertEnum.ICECREAM
                         ? const Color(0xfff56093)
                         : Colors.white,
                   ),
-                  Category(
+                  CategoryWidget(
                     text_: "Pancakes",
                     onPressed_: () {
-                      if (which == DessertEnum.pancake) {
+                      if (which == DessertEnum.PANCAKE) {
                         setState(() {
                           which = null;
                           desserts = allDesserts;
                         });
                       } else {
                         setState(() {
-                          which = DessertEnum.pancake;
+                          which = DessertEnum.PANCAKE;
                         });
                         selectCategory(which!);
                       }
                     },
-                    color_: which == DessertEnum.pancake
+                    color_: which == DessertEnum.PANCAKE
                         ? const Color(0xfff56093)
                         : Colors.grey.shade500,
-                    ballColor: which == DessertEnum.pancake
+                    ballColor: which == DessertEnum.PANCAKE
                         ? const Color(0xfff56093)
                         : Colors.white,
                   ),
-                  Category(
+                  CategoryWidget(
                     text_: "Waffles",
                     onPressed_: () {
-                      if (which == DessertEnum.waffle) {
+                      if (which == DessertEnum.WAFFLE) {
                         setState(() {
                           which = null;
                           desserts = allDesserts;
                         });
                       } else {
                         setState(() {
-                          which = DessertEnum.waffle;
+                          which = DessertEnum.WAFFLE;
                         });
                         selectCategory(which!);
                       }
                     },
-                    color_: which == DessertEnum.waffle
+                    color_: which == DessertEnum.WAFFLE
                         ? const Color(0xfff5cc82)
                         : Colors.grey.shade500,
-                    ballColor: which == DessertEnum.waffle
+                    ballColor: which == DessertEnum.WAFFLE
                         ? const Color(0xfff5cc82)
                         : Colors.white,
                   ),
@@ -247,11 +247,13 @@ class _HomePageState extends State<HomePage> {
                       dessert: dessert_,
                       onPressed: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RecipePage(
-                                      dessert: dessert_,
-                                    )));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RecipePage(
+                              dessert: dessert_,
+                            ),
+                          ),
+                        );
                       },
                     ),
                     builder:
@@ -274,7 +276,6 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     // alignment: Alignment.center,
                     padding: EdgeInsets.all(10),
-
                     width: 110,
                     margin: EdgeInsets.only(right: 30),
                     decoration: BoxDecoration(

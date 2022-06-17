@@ -1,5 +1,5 @@
 import 'package:dessert_app/models/dessert.dart';
-import 'package:dessert_app/pages/timer.dart';
+import 'package:dessert_app/pages/timer_page.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/ingredient.dart';
@@ -27,8 +27,6 @@ class RecipePage extends StatelessWidget {
                     bottom: 20,
                     top: 40,
                   ),
-                  // margin: EdgeInsets.only(top: 15),
-                  // padding: EdgeInsets.all(20),
                   child: Row(
                     children: <Widget>[
                       Expanded(
@@ -36,39 +34,22 @@ class RecipePage extends StatelessWidget {
                         child: GestureDetector(
                           onTap: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => TimerPage(
-                                          prepTime: dessert.prepTime,
-                                          cookTime: dessert.cookTime,
-                                          color: dessert.color,
-                                        )));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TimerPage(
+                                  prepTime: dessert.prepTime,
+                                  cookTime: dessert.cookTime,
+                                  color: dessert.color,
+                                ),
+                              ),
+                            );
                           },
-
-                          // color: Colors.grey.shade300,
-                          // decoration: BoxDecoration(
-                          //     borderRadius: BorderRadius.all(Radius.circular(5)),
-                          //     // ),
-                          //     border: Border.all(color: Colors.grey.shade500)),
                           child: Container(
                             margin: EdgeInsets.only(left: 30),
-                            // width: 130,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: dessert.color),
-                              // color: dessert.color,
                             ),
-                            // GestureDetector(
-                            //   onTap: () {
-                            //     Navigator.push(
-                            //         context,
-                            //         MaterialPageRoute(
-                            //             builder: (context) => TimerPage(
-                            //                   prepTime: dessert.prepTime,
-                            //                   cookTime: dessert.cookTime,
-                            //                   color: dessert.color,
-                            //                 )));
-                            //   },
                             child: Column(
                               children: [
                                 Icon(
@@ -157,9 +138,7 @@ class RecipePage extends StatelessWidget {
                               icon: Icon(Icons.arrow_back_ios),
                               color: Colors.grey.shade700,
                             ),
-                            // Icon(Icons.arrow_back_ios),
                             Expanded(child: Container()),
-                            // Icon(Icons.favorite_outline),
                           ],
                         ),
                       ),
@@ -189,7 +168,6 @@ class RecipePage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Container(
-              // padding: EdgeInsets.all(30),
               height: 300,
               child: SingleChildScrollView(
                 child: Column(

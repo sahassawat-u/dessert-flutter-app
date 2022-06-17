@@ -3,18 +3,18 @@ import 'package:dessert_app/models/ingredient.dart';
 import 'package:dessert_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
+// since first milestone has been marked, I used url images instead of
+// local ones to optimize the local storage
 final allDesserts = <Dessert>[
   Dessert(
     name: "Buttermilk Pancakes",
-    type: DessertEnum.pancake,
+    type: DessertEnum.PANCAKE,
     imgUrl:
         "https://www.pngall.com/wp-content/uploads/5/Buttermilk-Pancake-PNG-Picture.png",
-    // "https://www.pngall.com/wp-content/uploads/5/Buttermilk-Pancake-PNG-Image.png",
     prepTime: 5,
     cookTime: 15,
     serving: "16 pieces",
     lvl: "Easy",
-// F4CE9E
     color: const Color(0xffF4CE9E),
     step: """○ Preheat your griddle to a medium high heat.
 ○ In a large bowl, whisk your dry ingredients together.
@@ -31,28 +31,28 @@ and the edges cooked, flip them over.
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/one-egg-isolated-on-white-background-picture-id479882154?k=20&m=479882154&s=612x612&w=0&h=DDK5IETcAVh52eAGiP0Px_EsVUxBQ4r_J36QEJCYuV8=",
-          measure: "Eggs"),
+          name: "Eggs"),
       Ingredient(
           imgUrl:
-              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-measure-28933684.jpg",
-          measure: "Flour"),
+              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-name-28933684.jpg",
+          name: "Flour"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/pouring-glass-milk-creating-splash-white-background-from-top-view_45716-42.jpg",
-          measure: "Milk"),
+          name: "Milk"),
       Ingredient(
           imgUrl:
               "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F12%2F07%2FGettyImages-1059394548-2000.jpg&q=60",
-          measure: "Baking powder"),
+          name: "Baking powder"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/butter-white-background_62856-1262.jpg",
-          measure: "Butter"),
+          name: "Butter"),
     ],
   ),
   Dessert(
     name: "Old-Fashioned Ice Cream Banana Split",
-    type: DessertEnum.iceCream,
+    type: DessertEnum.ICECREAM,
     imgUrl:
         "https://pngroyale.com/wp-content/uploads/2022/02/Banana-Split-PNG-Pic.png",
     prepTime: 5,
@@ -73,32 +73,32 @@ and the edges cooked, flip them over.
     ingredients: <Ingredient>[
       Ingredient(
           imgUrl: "https://s3.envato.com/files/336211055/2971_10_.jpg",
-          measure: "Banana"),
+          name: "Banana"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/whipped-cream-white-background-39504854.jpg",
-          measure: "Whipped cream"),
+          name: "Whipped cream"),
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/fruit-maraschino-cherries-isolated-on-white-background-picture-id1198670797?k=20&m=1198670797&s=170667a&w=0&h=ihBD9ltICjxQ5M01PuPP2eEgOFrHxc8FemZcNo2jEVY=",
-          measure: "Maraschino cherries"),
+          name: "Maraschino cherries"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/chocolate-ice-cream-white-background-isolated-149594014.jpg",
-          measure: "Chocolate ice cream"),
+          name: "Chocolate ice cream"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/vanilla-ice-cream-ceramic-cup-isolated-white-background-162796814.jpg",
-          measure: "Vanilla ice cream"),
+          name: "Vanilla ice cream"),
       Ingredient(
           imgUrl:
               "https://spicecravings.com/wp-content/uploads/2020/02/Strawberry-Jam-5.jpg",
-          measure: "Strawberry jam"),
+          name: "Strawberry jam"),
     ],
   ),
   Dessert(
     name: "Red Velvet Cake",
-    type: DessertEnum.cake,
+    type: DessertEnum.CAKE,
     imgUrl:
         "https://images.squarespace-cdn.com/content/v1/538500e4e4b0fa9e95efc7b9/1627658152227-GD7J9FR0F7005TFL16JQ/Red+Velvet+Baby+Cake+Montage.png?format=2500w",
     prepTime: 5,
@@ -119,32 +119,32 @@ and the edges cooked, flip them over.
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/bottle-vanilla-extract-sticks-bottle-vanilla-extract-sticks-white-background-108069318.jpg",
-          measure: "Sweet vanilla"),
+          name: "Sweet vanilla"),
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/one-egg-isolated-on-white-background-picture-id479882154?k=20&m=479882154&s=612x612&w=0&h=DDK5IETcAVh52eAGiP0Px_EsVUxBQ4r_J36QEJCYuV8=",
-          measure: "eggs"),
+          name: "eggs"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/pouring-glass-milk-creating-splash-white-background-from-top-view_45716-42.jpg",
-          measure: "Milk"),
+          name: "Milk"),
       Ingredient(
           imgUrl:
-              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-measure-28933684.jpg",
-          measure: "All-purpose flour"),
+              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-name-28933684.jpg",
+          name: "All-purpose flour"),
       Ingredient(
           imgUrl:
               "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Philly_cream_cheese.jpg/1200px-Philly_cream_cheese.jpg",
-          measure: "Cream cheese"),
+          name: "Cream cheese"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/butter-white-background_62856-1262.jpg",
-          measure: "Butter"),
+          name: "Butter"),
     ],
   ),
   Dessert(
     name: "Triple Berry Pancakes",
-    type: DessertEnum.pancake,
+    type: DessertEnum.PANCAKE,
     imgUrl:
         "https://www.downloadclipart.net/large/pancakes-transparent-background.png",
     prepTime: 5,
@@ -160,32 +160,32 @@ and the edges cooked, flip them over.
       Ingredient(
           imgUrl:
               "https://cdn.shopify.com/s/files/1/0435/2304/7581/products/TripleBerryBlend_cue_420x352.jpg?v=1608222836",
-          measure: "Triple berry"),
+          name: "Triple berry"),
       Ingredient(
           imgUrl:
-              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-measure-28933684.jpg",
-          measure: "All-purpose flour"),
+              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-name-28933684.jpg",
+          name: "All-purpose flour"),
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/one-egg-isolated-on-white-background-picture-id479882154?k=20&m=479882154&s=612x612&w=0&h=DDK5IETcAVh52eAGiP0Px_EsVUxBQ4r_J36QEJCYuV8=",
-          measure: "Eggs"),
+          name: "Eggs"),
       Ingredient(
           imgUrl:
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjY9wNapsQaTTox-wRcvgjN_MRZpKO4QnoRg&usqp=CAU",
-          measure: "Vegetable oil"),
+          name: "Vegetable oil"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/pouring-glass-milk-creating-splash-white-background-from-top-view_45716-42.jpg",
-          measure: "Syrup"),
+          name: "Syrup"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/butter-white-background_62856-1262.jpg",
-          measure: "Water"),
+          name: "Water"),
     ],
   ),
   Dessert(
     name: "Chocolate Cake",
-    type: DessertEnum.cake,
+    type: DessertEnum.CAKE,
     imgUrl:
         "https://www.pngmart.com/files/16/Chocolate-Cake-Transparent-PNG.png",
     prepTime: 10,
@@ -204,32 +204,32 @@ and the edges cooked, flip them over.
       Ingredient(
           imgUrl:
               "https://shinjukuhalalfood.com/wp-content/uploads/2020/12/Rice_Powder-removebg-preview.png",
-          measure: "Flour"),
+          name: "Flour"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/cocoa-pods-cocoa-beans-cacao-powder-with-leaves-isolated-white-background_38145-729.jpg",
-          measure: "Cocoa"),
+          name: "Cocoa"),
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/one-egg-isolated-on-white-background-picture-id479882154?k=20&m=479882154&s=612x612&w=0&h=DDK5IETcAVh52eAGiP0Px_EsVUxBQ4r_J36QEJCYuV8=",
-          measure: "Eggs"),
+          name: "Eggs"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/bottle-vanilla-extract-sticks-bottle-vanilla-extract-sticks-white-background-108069318.jpg",
-          measure: "Vanilla"),
+          name: "Vanilla"),
       Ingredient(
           imgUrl:
               "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX1608342.jpg",
-          measure: "Oil"),
+          name: "Oil"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/whipped-cream-white-background-39504854.jpg",
-          measure: "Heavy cream"),
+          name: "Heavy cream"),
     ],
   ),
   Dessert(
     name: "Blueberry \nBuckle",
-    type: DessertEnum.cake,
+    type: DessertEnum.CAKE,
     imgUrl:
         "https://www.pngkit.com/png/full/106-1063654_blueberry-vanilla-cheesecake-vanilj-o-blbr-cheesecake.png",
     prepTime: 20,
@@ -254,36 +254,36 @@ and the edges cooked, flip them over.
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/butter-white-background_62856-1262.jpg",
-          measure: "Butter"),
+          name: "Butter"),
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/one-egg-isolated-on-white-background-picture-id479882154?k=20&m=479882154&s=612x612&w=0&h=DDK5IETcAVh52eAGiP0Px_EsVUxBQ4r_J36QEJCYuV8=",
-          measure: "Egg"),
+          name: "Egg"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/pouring-glass-milk-creating-splash-white-background-from-top-view_45716-42.jpg",
-          measure: "Milk"),
+          name: "Milk"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/pure-almond-extract-isolated-white-background-82278917.jpg",
-          measure: "Almond extract"),
+          name: "Almond extract"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/blueberry-fruit-white-background_33807-1138.jpg",
-          measure: "Blueberries"),
+          name: "Blueberries"),
       Ingredient(
           imgUrl:
-              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-measure-28933684.jpg",
-          measure: "All-purpose flour"),
+              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-name-28933684.jpg",
+          name: "All-purpose flour"),
       Ingredient(
           imgUrl:
               "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F12%2F07%2FGettyImages-1059394548-2000.jpg&q=60",
-          measure: "Baking powder"),
+          name: "Baking powder"),
     ],
   ),
   Dessert(
     name: "Cream Cheese Chocolate Chip Cookies",
-    type: DessertEnum.cookie,
+    type: DessertEnum.COOKIE,
     imgUrl: "https://pngimg.com/uploads/cookie/cookie_PNG13694.png",
     prepTime: 10,
     cookTime: 10,
@@ -302,37 +302,37 @@ and the edges cooked, flip them over.
     ingredients: <Ingredient>[
       Ingredient(
           imgUrl:
-              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-measure-28933684.jpg",
-          measure: "Flour"),
+              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-name-28933684.jpg",
+          name: "Flour"),
       Ingredient(
           imgUrl:
               "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F12%2F07%2FGettyImages-1059394548-2000.jpg&q=60",
-          measure: "Baking soda"),
+          name: "Baking soda"),
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/one-egg-isolated-on-white-background-picture-id479882154?k=20&m=479882154&s=612x612&w=0&h=DDK5IETcAVh52eAGiP0Px_EsVUxBQ4r_J36QEJCYuV8=",
-          measure: "Eggs"),
+          name: "Eggs"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/bottle-vanilla-extract-sticks-bottle-vanilla-extract-sticks-white-background-108069318.jpg",
-          measure: "Vanilla"),
+          name: "Vanilla"),
       Ingredient(
           imgUrl:
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjwfNXwCsa5SmSCC0GyUbd-9bOzTpsDXDmWwV05LQOlil0QPWsIrZbdyJUrukXBFWo7Hg&usqp=CAU",
-          measure: "Chocolate chips"),
+          name: "Chocolate chips"),
       Ingredient(
           imgUrl:
               "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Philly_cream_cheese.jpg/1200px-Philly_cream_cheese.jpg",
-          measure: "Cream cheese"),
+          name: "Cream cheese"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/butter-white-background_62856-1262.jpg",
-          measure: "Butter"),
+          name: "Butter"),
     ],
   ),
   Dessert(
     name: "Butterscotch Cookies",
-    type: DessertEnum.cookie,
+    type: DessertEnum.COOKIE,
     imgUrl:
         "https://pngroyale.com/wp-content/uploads/2022/02/Cookie-Transparent-Background-PNG-768x513.png",
     prepTime: 10,
@@ -351,32 +351,32 @@ and the edges cooked, flip them over.
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/sugar-cubes-bowl-isolated-white-background-view-from_219958-544.jpg",
-          measure: "Sugar"),
+          name: "Sugar"),
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/one-egg-isolated-on-white-background-picture-id479882154?k=20&m=479882154&s=612x612&w=0&h=DDK5IETcAVh52eAGiP0Px_EsVUxBQ4r_J36QEJCYuV8=",
-          measure: "Eggs"),
+          name: "Eggs"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/pouring-glass-milk-creating-splash-white-background-from-top-view_45716-42.jpg",
-          measure: "Milk"),
+          name: "Milk"),
       Ingredient(
           imgUrl:
-              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-measure-28933684.jpg",
-          measure: "All-purpose flour"),
+              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-name-28933684.jpg",
+          name: "All-purpose flour"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/butterscotch-baking-chips-white-background-76725500.jpg",
-          measure: "Butterscotch chips"),
+          name: "Butterscotch chips"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/butter-white-background_62856-1262.jpg",
-          measure: "Butter"),
+          name: "Butter"),
     ],
   ),
   Dessert(
     name: "Banana Waffles",
-    type: DessertEnum.waffle,
+    type: DessertEnum.WAFFLE,
     imgUrl:
         "https://i.pinimg.com/originals/9e/7d/dc/9e7ddcd13d3ea8439f8bee1063a7ee97.png",
     prepTime: 5,
@@ -395,35 +395,35 @@ and the edges cooked, flip them over.
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/wheat-flour-wheat-bars-white-background_320146-63.jpg",
-          measure: "Wheat flour"),
+          name: "Wheat flour"),
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/one-egg-isolated-on-white-background-picture-id479882154?k=20&m=479882154&s=612x612&w=0&h=DDK5IETcAVh52eAGiP0Px_EsVUxBQ4r_J36QEJCYuV8=",
-          measure: "Eggs"),
+          name: "Eggs"),
       Ingredient(
           imgUrl: "https://s3.envato.com/files/336211055/2971_10_.jpg",
-          measure: "Banana"),
+          name: "Banana"),
       Ingredient(
           imgUrl:
               "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F12%2F07%2FGettyImages-1059394548-2000.jpg&q=60",
-          measure: "Baking powder"),
+          name: "Baking powder"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/pouring-glass-milk-creating-splash-white-background-from-top-view_45716-42.jpg",
-          measure: "Milk"),
+          name: "Milk"),
       Ingredient(
           imgUrl:
               "https://t3.ftcdn.net/jpg/02/43/69/04/360_F_243690485_yK28LyuSs9vzwzE8LuYfHEUBCtxboOlc.jpg",
-          measure: "Cinnamon"),
+          name: "Cinnamon"),
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/red-apple-sliced-isolated-on-white-picture-id1255668886?k=20&m=1255668886&s=170667a&w=0&h=lUcLxr83J-QYPClo9yu8RG1YNffWpddDyy_M44RsnFc=",
-          measure: "Shredded apple"),
+          name: "Shredded apple"),
     ],
   ),
   Dessert(
     name: "Classic Buttermilk Waffles",
-    type: DessertEnum.waffle,
+    type: DessertEnum.WAFFLE,
     imgUrl:
         "https://www.pngall.com/wp-content/uploads/5/Waffle-PNG-Image-HD.png",
     prepTime: 10,
@@ -442,29 +442,29 @@ and the edges cooked, flip them over.
     ingredients: <Ingredient>[
       Ingredient(
           imgUrl:
-              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-measure-28933684.jpg",
-          measure: "Flour"),
+              "https://thumbs.dreamstime.com/b/plain-all-purpose-flour-presented-american-cup-name-28933684.jpg",
+          name: "Flour"),
       Ingredient(
           imgUrl:
               "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F12%2F07%2FGettyImages-1059394548-2000.jpg&q=60",
-          measure: "Baking powder"),
+          name: "Baking powder"),
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/one-egg-isolated-on-white-background-picture-id479882154?k=20&m=479882154&s=612x612&w=0&h=DDK5IETcAVh52eAGiP0Px_EsVUxBQ4r_J36QEJCYuV8=",
-          measure: "Eggs"),
+          name: "Eggs"),
       Ingredient(
           imgUrl:
               "https://img.freepik.com/free-photo/sugar-cubes-bowl-isolated-white-background-view-from_219958-544.jpg",
-          measure: "Sugar"),
+          name: "Sugar"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/glass-fresh-organic-buttermilk-isoloated-white-background-glass-fresh-buttermilk-126547324.jpg",
-          measure: "Buttermilk"),
+          name: "Buttermilk"),
     ],
   ),
   Dessert(
     name: "Homemade Strawberry Ice Cream",
-    type: DessertEnum.iceCream,
+    type: DessertEnum.ICECREAM,
     imgUrl:
         "https://www.hersheyicecream.com/products/images/lighter-side/rfnsa-strawberry-scoop2.png",
     prepTime: 10,
@@ -482,23 +482,23 @@ and the edges cooked, flip them over.
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/strawberry-with-sliced-half-isolated-on-white-background-picture-id876503894?k=20&m=876503894&s=170667a&w=0&h=90ftdDaJO4Ze2YgL0MTdMSykrpCUBkFTgdsx0WcdCIk=",
-          measure: "Strawberries"),
+          name: "Strawberries"),
       Ingredient(
           imgUrl:
               "https://media.istockphoto.com/photos/honey-picture-id155308208?k=20&m=155308208&s=612x612&w=0&h=ATkSXWzJnPnACsv7yIDFDRJ6Y33fSOSjNZLqhlpoJ8k=",
-          measure: "Honey"),
+          name: "Honey"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/heap-granulated-sugar-cube-isolated-white-background-top-view-flat-lay-heap-granulated-sugar-cube-isolated-109350241.jpg",
-          measure: "Granulated sugar"),
+          name: "Granulated sugar"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/whipped-cream-white-background-39504854.jpg",
-          measure: "Whipping cream"),
+          name: "Whipping cream"),
       Ingredient(
           imgUrl:
               "https://thumbs.dreamstime.com/b/bottle-vanilla-extract-sticks-bottle-vanilla-extract-sticks-white-background-108069318.jpg",
-          measure: "Vanilla extract"),
+          name: "Vanilla extract"),
     ],
   ),
 ];

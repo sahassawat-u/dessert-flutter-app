@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class IngredientWidget extends StatelessWidget {
   IngredientWidget({required this.ingredient, required this.theme});
+
   final Ingredient ingredient;
   final Color theme;
   @override
@@ -10,7 +11,6 @@ class IngredientWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         showIngredientDialog(context);
-        // print(ingredient.measure);
       },
       child: Container(
         margin: EdgeInsets.only(right: 2, left: 15),
@@ -33,6 +33,7 @@ class IngredientWidget extends StatelessWidget {
   void showIngredientDialog(BuildContext context) => showDialog(
       context: context,
       builder: (ctx) => Dialog(
+            elevation: 0,
             backgroundColor: Colors.transparent,
             child: Container(
               padding: EdgeInsets.all(8),
@@ -55,7 +56,7 @@ class IngredientWidget extends StatelessWidget {
                   ),
                   Container(
                     child: Text(
-                      ingredient.measure,
+                      ingredient.name,
                       style: TextStyle(fontSize: 20),
                       textAlign: TextAlign.center,
                     ),

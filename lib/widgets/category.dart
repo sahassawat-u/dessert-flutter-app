@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
-class Category extends StatelessWidget {
-  Category({
+class CategoryWidget extends StatelessWidget {
+  CategoryWidget({
     required this.onPressed_,
     required this.text_,
     required this.color_,

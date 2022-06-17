@@ -7,6 +7,7 @@ class SearchWidget extends StatefulWidget {
     required this.onChanged,
     required this.hintText,
   }) : super(key: key);
+
   final String text;
   final ValueChanged<String> onChanged;
   final String hintText;
